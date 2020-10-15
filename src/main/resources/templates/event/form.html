@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar evento</title>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div class="row center">
+        <form class="col s12" th:object="${event}" method="post" th:action="@{/events/form}">
+            <div class="row">
+                <input th:field="*{id}" type="hidden">
+                <div th:if="${!event.image.isEmpty()}">
+                    <img class="materialboxed event-image" th:src="${event.image}">
+                </div>
+                <div class="input-field col s12">
+                    <input id="image" type="text"
+                           th:field="*{image}">
+                    <label for="image">Imagem</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="title" type="text" class="validate" th:field="*{title}"
+                           th:text="${image != null} ? ${image.title}">
+                    <label for="title">Título</label>
+                </div>
+                <div class="input-field col s12">
+                    <textarea id="description" class="materialize-textarea" th:field="*{description}"></textarea>
+                    <label for="description">Descrição</label>
+                </div>
+            </div>
+            <button class="btn waves-effect center waves-light s12" type="submit" name="action">Salvar
+                <i class="material-icons right">done</i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+
+
+</body>
+</html>

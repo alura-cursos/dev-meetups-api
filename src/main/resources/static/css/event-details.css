@@ -1,0 +1,20 @@
+.card-title-text {
+    font-size: 3em;
+    line-height: 1.2em;
+    word-wrap: break-word;
+}
+
+.card .card-content p {
+    margin-top: 25px;
+}
+
+.card-description-text {
+    font-size: 2em;
+    line-height: 1.5em;
+    word-wrap: break-word;
+    white-space: break-spaces;
+}
+
+.card .card-content .card-title i {
+    line-height: 2.5em;
+}

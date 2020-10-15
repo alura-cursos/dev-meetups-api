@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes</title>
+    <div th:replace="fragments/head :: head"></div>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/event-details.css}"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div class="card" th:object="${event}">
+        <div th:if="${!event.image.isEmpty()}" class="card-image">
+            <img class="event-image" th:src="${event.image}">
+        </div>
+        <div class="card-content">
+            <span class="card-title">
+                <a th:eventId="${event.id}" th:onclick="|deleteEvent(this.getAttribute('eventId'))|" href="#"><i
+                        class="material-icons right waves-effect waves-circle">delete</i></a>
+                <a th:href="@{form/{id}(id=${event.id})}"><i class="material-icons right waves-effect waves-circle">edit</i></a>
+                <span class="card-title-text" th:text="${event.title}"></span>
+            </span>
+            <p class="card-description-text" th:text="${event.description}"></p>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<script type="text/javascript" th:src="@{/js/event-details.js}"></script>
+
+</body>
+</html>

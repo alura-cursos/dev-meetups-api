@@ -1,0 +1,26 @@
+.event-image {
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.container {
+    margin-top: 5%;
+}
+
+.waves-effect {
+    display: block;
+}
+
+.btn.waves-effect.center {
+    display: inline;
+}
+
+.brand-logo.center {
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+.index-card-title {
+    font-size: 1.5em;
+}

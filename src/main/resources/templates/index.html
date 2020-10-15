@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Início</title>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div class="row center">
+        <a th:href="@{/events}">
+            <div class="col s12 m4 l4">
+                <div class="card-panel z-depth-1 center waves-effect">
+                    <i class="medium material-icons ">event </i>
+                    <span class="truncate index-card-title">Eventos</span>
+                </div>
+            </div>
+        </a>
+        <a th:href="@{/firebase/fcm/form}">
+            <div class="col s4">
+                <div class="card-panel z-depth-1 center waves-effect">
+                    <i class="medium material-icons ">message</i>
+                    <span class="truncate index-card-title">Mensagens</span>
+                </div>
+            </div>
+        </a>
+        <div class="col s12 m2 l2"></div>
+        <a th:href="@{/devices}">
+            <div class="col s4">
+                <div class="card-panel z-depth-1 center waves-effect">
+                    <i class="medium material-icons ">phone_android</i>
+                    <span class="truncate index-card-title">Dispositivos</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

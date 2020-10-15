@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar evento</title>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div th:if="${!firebaseConnectionState}" class="row center">
+        <form method="post" th:action="@{/firebase/fcm/connect}">
+            <h2>Firebase não configurado</h2>
+            <p>Adicione a chave do Firebase (arquivo json baixado do console) no diretório <b>firebase</b> do servidor.
+                Então, clique em atualizar para sincronizar.</p>
+            <button class="btn waves-effect center waves-light s6" type="submit" name="action">Atualizar
+                <i class="material-icons right">sync</i>
+            </button>
+        </form>
+    </div>
+    <div class="row center" th:if="${firebaseConnectionState}">
+        <h3>Dados</h3>
+        <form class="col s12" th:object="${firebaseMessage}" method="post" th:action="@{/firebase/fcm/send/data}">
+            <div class="row">
+            </div>
+            <div class="input-field col s12">
+                <input id="data-title" type="text" class="validate" th:field="*{title}">
+                <label for="data-title">Título</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="data-message" class="materialize-textarea" th:field="*{message}"></textarea>
+                <label for="data-title">Mensagem</label>
+            </div>
+            <button class="btn waves-effect center waves-light s12" type="submit" name="action">Enviar
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+
+
+    </div>
+    <div class="row center" th:if="${firebaseConnectionState}">
+        <h3>Notificação</h3>
+        <form class="col s12" th:object="${firebaseMessage}" method="post"
+              th:action="@{/firebase/fcm/send/notification}">
+            <div class="row">
+            </div>
+            <div class="input-field col s12">
+                <input id="title" type="text" class="validate" th:field="*{title}">
+                <label for="title">Título</label>
+            </div>
+            <div class="input-field col s12">
+                <textarea id="message" class="materialize-textarea" th:field="*{message}"></textarea>
+                <label for="title">Mensagem</label>
+            </div>
+            <button class="btn waves-effect center waves-light s12" type="submit" name="action">Enviar
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

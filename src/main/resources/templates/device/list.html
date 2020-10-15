@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dispositivos</title>
+    <div th:replace="fragments/head :: head"></div>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container">
+    <div class="row center">
+        <ul th:if="${!devices.isEmpty()}" class="collapsible">
+            <li th:each="device : ${devices}">
+                <div class="collapsible-header">
+                    <i class="material-icons">phone_android</i>
+                    <span th:text="${device.brand} + ' - ' + ${device.model}"></span>
+                </div>
+                <div class="collapsible-body">
+                    <span th:text="${device.firebaseToken}"></span>
+                </div>
+            </li>
+        </ul>
+        <h2 th:if="${devices.isEmpty()}">Não há dispositivos</h2>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
